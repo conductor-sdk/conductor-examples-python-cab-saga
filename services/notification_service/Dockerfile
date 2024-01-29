@@ -4,7 +4,8 @@ RUN pip3 install conductor-python
 
 WORKDIR /app
 
-COPY notification.py /app/main.py
+COPY notification.py /app/notification.py
+COPY main.py /app/main.py
 
 EXPOSE 5000
 

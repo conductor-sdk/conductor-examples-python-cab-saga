@@ -4,7 +4,8 @@ RUN pip3 install conductor-python
 
 WORKDIR /app
 
-COPY payments.py /app/main.py
+COPY payments.py /app/payments.py
+COPY main.py /app/main.py
 
 EXPOSE 5000
 

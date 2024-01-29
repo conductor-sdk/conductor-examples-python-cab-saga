@@ -39,10 +39,19 @@ python3 workflows.py
 python3 main.py
 ```
 
-# Run microservice based workers
+## Run workers
+
+### Microservice based workers
+
 ```shell
 docker compose up
 ```
+### Monolithic workers
+
+```shell
+python3 workers.py
+```
+
 
 ## Trigger Booking Creation
 

@@ -4,7 +4,8 @@ RUN pip3 install conductor-python
 
 WORKDIR /app
 
-COPY assignment.py /app/main.py
+COPY assignment.py /app/assignment.py
+COPY main.py /app/main.py
 
 EXPOSE 5000
 

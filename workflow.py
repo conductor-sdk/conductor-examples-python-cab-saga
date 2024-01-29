@@ -2,7 +2,6 @@ from conductor.client.configuration.configuration import Configuration
 from conductor.client.orkes.orkes_metadata_client import OrkesMetadataClient
 from conductor.client.workflow.conductor_workflow import ConductorWorkflow
 from conductor.client.workflow.executor.workflow_executor import WorkflowExecutor
-from conductor.client.workflow.task.simple_task import SimpleTask
 from conductor.client.workflow.task.fork_task import ForkTask
 from services.booking_service.booking import book_ride, confirm_booking
 from services.assignment_service.assignment import assign_driver
@@ -15,7 +14,7 @@ def register_cab_booking_workflow() -> ConductorWorkflow:
     workflow_executor = WorkflowExecutor(configuration=configuration)
 
     workflow = ConductorWorkflow(
-        name='cab_service_saga_demo_3', description="Cab Service Saga Demo", executor=workflow_executor
+        name='cab_service_saga_dry_run', description="Cab Service Dry Run", executor=workflow_executor
     )
 
     book = book_ride(
