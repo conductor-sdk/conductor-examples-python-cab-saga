@@ -1,0 +1,46 @@
+version: '3.4'
+services:
+  booking:
+    build:
+      context: ./services/booking_service
+      dockerfile: Dockerfile
+    image: python_cab_saga/booking_service
+    container_name: booking_service
+    env_file: .env
+    ports:
+      - '5001:5000'
+    expose:
+      - '5001'
+  assignment:
+    build:
+      context: ./services/assignment_service
+      dockerfile: Dockerfile
+    image: python_cab_saga/assignment_service
+    container_name: assignment_service
+    env_file: .env
+    ports:
+      - '5002:5000'
+    expose:
+      - '5002'
+  payment:
+    build:
+      context: ./services/payment_service
+      dockerfile: Dockerfile
+    image: python_cab_saga/payment_service
+    container_name: payment_service
+    env_file: .env
+    ports:
+      - '5003:5000'
+    expose:
+      - '5003'
+  notification:
+    build:
+      context: ./services/notification_service
+      dockerfile: Dockerfile
+    image: python_cab_saga/notification_service
+    container_name: notification_service
+    env_file: .env
+    ports:
+      - '5004:5000'
+    expose:
+      - '5004'
