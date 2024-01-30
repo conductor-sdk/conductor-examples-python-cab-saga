@@ -14,7 +14,7 @@ def register_cab_booking_workflow() -> ConductorWorkflow:
     workflow_executor = WorkflowExecutor(configuration=configuration)
 
     workflow = ConductorWorkflow(
-        name='cab_service_saga_dry_run', description="Cab Service Dry Run", executor=workflow_executor
+        name='cab_service_saga_python', description="Cab Service Saga Python", executor=workflow_executor
     )
 
     book = book_ride(
@@ -61,13 +61,12 @@ def register_cab_booking_workflow() -> ConductorWorkflow:
     workflow >> book >> assign  >> pay  >> confirm >> notify
     
     workflow.input_parameters(['pick_up_location', 'drop_off_location', 'rider_id'])
-    workflow.output_parameters({'booking_id': '${book_ride_ref.output.booking_id}'})
+    workflow.output_parameters({'booking_id': book.output('booking_id')})
     
     metadata_client = OrkesMetadataClient(configuration)
     workflowDef = workflow.to_workflow_def()
     workflowDef.failure_workflow = 'cab_service_saga_cancellation_wf'
     metadata_client.register_workflow_def(workflowDef, overwrite=True)
-    
     return workflow
 
 def main():
